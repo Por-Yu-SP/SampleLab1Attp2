@@ -15,12 +15,19 @@ import csv
 ##########################################################
 def get_longest_workout(workouts):
     longest = None
-
+    if len(workouts)==0:
+        return None
+    longest=workouts[0]["duration"]
     # Add your implementation from here
     #HINT: Loop through workouts and compare durations
+    ans=workouts[0]
+    for item in workouts:
+        if item["duration"]>longest:
+            longest=item["duration"]
+            ans=item
 
 
-    return longest
+    return ans
 
 ##################################################################
 # Function to calculate total duration of all workouts           #
@@ -32,10 +39,11 @@ def get_longest_workout(workouts):
 ##################################################################
 def calc_total_duration(workouts):
     total = 0
+    for item in workouts:
+        total+=item["duration"]
 
     # Add your implementation from here
     #HINT: start with this code: for workout in workouts:
-
 
     return total
 
@@ -49,12 +57,10 @@ def calc_total_duration(workouts):
 ##################################################################
 def calc_average_duration(workouts):
     average = 0
-
+    
     # Add your implementation from here
     #HINT: Use calc_total_duration(workouts) and len(workouts)
-
-
-    return average
+    return calc_total_duration(workouts)/len(workouts)
 
 #--------- End of Functions to be implemented for Practice Lab 1 -----------------------
 
